@@ -66,7 +66,7 @@
     <div class="notice">
         <div class="header">
             <div class="left">
-              xxx
+              xxxxxx
             </div>
             <div class="right">
 
