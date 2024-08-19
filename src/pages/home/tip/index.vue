@@ -66,12 +66,15 @@
     <div class="notice">
         <div class="header">
             <div class="left">
-                
+
+            </div>
+            <div class="right">
+
             </div>
         </div>
     </div>
   </div>
-</template>
+</template> 
 
 <script setup lang='ts'>
 </script>
