@@ -30,7 +30,7 @@ let $router = useRouter()
 const goDetail = ()=>{
     console.log(props.hospitalInfo);
     
-    $router.push({path:'/hospital'})
+    $router.push({path:'/hospital/register'})
 }
 </script>
 
