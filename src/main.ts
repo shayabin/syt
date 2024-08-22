@@ -15,6 +15,8 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 //中文
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
+//引入pinia仓库
+import pinia from '@/store'
 
 const app = createApp(App)
 app.component('HospitalTop',HospitalTop)
@@ -23,6 +25,7 @@ app.use(router)
 app.use(ElementPlus,{
     locale: zhCn,
 })
+app.use(pinia)
 
 app.mount('#app')
 // createApp(App).mount('#app')

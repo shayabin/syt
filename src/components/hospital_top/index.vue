@@ -26,6 +26,7 @@ const goHome = ()=>{
 
 <style scoped lang="scss">
 .top {
+  border-bottom: 1px #f1eded solid;
   position: fixed;
   z-index: 999;
   width: 100%;
@@ -34,6 +35,7 @@ const goHome = ()=>{
   display: flex;
   justify-content: center;
   .content {
+    border-bottom: 1px #f1eded solid;
     width: 1200px;
     height: 70px;
     background: white;

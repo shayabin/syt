@@ -9,8 +9,6 @@
       <el-menu
         :default-active="$route.path"
         class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
       >
         <el-menu-item index="/hospital/register" @click="changeActive('/hospital/register')">
           <el-icon><icon-menu /></el-icon>
@@ -42,9 +40,17 @@
 </template>
 
 <script setup lang='ts'>
+import {onMounted} from 'vue'
+import useDetailStore from '@/store/modules/hospitalDetail'
+let detailStore = useDetailStore()
+
 import {useRouter,useRoute} from 'vue-router'
 let $router = useRouter()
 let $route = useRoute()
+
+onMounted(()=>{
+  detailStore.getHospital($route.query.hoscode)
+})
 
 const changeActive = (path)=>{
     $router.push({path:path})
@@ -62,18 +68,22 @@ import {
 
 <style lang='scss' scoped>
 .hospital {
+  margin-top: 30px;
   display: flex;
   .menu {
+    font-size:20px;
     flex: 2;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: top;
     .top{
         color: #7f7f7f;
+        margin-bottom: 25px;
     }
   }
   .content {
-    flex: 8;
+    margin-left: 30px;
+    flex: 12;
   }
 }
 </style>

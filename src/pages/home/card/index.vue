@@ -28,9 +28,9 @@ import { useRouter } from "vue-router"
 let $router = useRouter()
 
 const goDetail = ()=>{
-    console.log(props.hospitalInfo);
+    // console.log(props.hospitalInfo);
     
-    $router.push({path:'/hospital/register'})
+    $router.push({path:'/hospital/register',query:{hoscode:props.hospitalInfo.hoscode}})
 }
 </script>
 
