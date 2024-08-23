@@ -88,6 +88,7 @@ let hospitalDetail = useDetailStore()
             color: #7f7f7f;
             line-height: 30px;
             margin-top: 10px;
+            text-indent: 2em;
         }
     }
 }

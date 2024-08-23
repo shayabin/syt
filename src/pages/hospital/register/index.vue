@@ -26,7 +26,7 @@
             <div class="releaseTime">
                 退号时间:就诊前一个工作日{{hospitalDetail.hospitalInfo.bookingRule?.quitTime}}前取消
             </div>
-            <div class="rule">预约挂号规则</div>
+            <div class="rule">预约挂号规则:</div>
             <div class="ruleInfo" v-for="(item,index) in hospitalDetail.hospitalInfo.bookingRule?.rule" :key="index">
                 {{item}}
             </div>
@@ -80,7 +80,7 @@
                 color: #7f7f7f;
             }
             .rule {
-                margin: 10px 0;
+                margin: 20px 0 10px 0;
             }
         }
     }
