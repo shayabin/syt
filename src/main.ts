@@ -5,10 +5,9 @@ import '@/style/reset.scss'
 //@ts-ignore
 import App from '@/App.vue'
 //引用全局组件
-//@ts-ignore
 import HospitalTop from '@/components/hospital_top/index.vue'
-//@ts-ignore
 import HospitalBottom from '@/components/hospital_bottom/index.vue'
+import Login from '@/components/login/index.vue'
 import router from '@/router'
 //引入element-plus及样式
 import ElementPlus from 'element-plus'
@@ -21,6 +20,7 @@ import pinia from '@/store'
 const app = createApp(App)
 app.component('HospitalTop',HospitalTop)
 app.component('HospitalBottom',HospitalBottom)
+app.component('Login',Login)
 app.use(router)
 app.use(ElementPlus,{
     locale: zhCn,

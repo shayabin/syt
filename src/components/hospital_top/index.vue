@@ -9,7 +9,7 @@
       <!-- 右侧 -->
       <div class="right">
         <p class="help">帮助中心</p>
-        <p class="login">登录/注册</p>
+        <p class="login" @click="login">登录/注册</p>
       </div>
     </div>
   </div>
@@ -18,9 +18,18 @@
 <script setup lang="ts">
 //引入
 import {useRouter} from 'vue-router'
+//获取user仓库的数据（visiable）
+import useUserStore from '@/store/modules/user'
+let userStore = useUserStore()
+
 let $router = useRouter()
 const goHome = ()=>{
   $router.push({path:'/home'})
+}
+
+//点击登录/注册按钮弹出对话框
+const login = () => {
+  userStore.visiable = true
 }
 </script>
 

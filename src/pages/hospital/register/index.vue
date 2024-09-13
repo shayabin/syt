@@ -32,13 +32,47 @@
             </div>
         </div>
     </div>
+    <div class="department">
+        <div class="left">
+            <ul>
+                <li @click="changeIndex(index)" :class="{active:index == currentIndex}" v-for="(department, index) in hospitalDetail.departmentArr" :key="department.depcode">{{department.depname}}</li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="showDeparment" v-for="(department) in hospitalDetail.departmentArr" :key="department.depcode">
+                <h1 class="cur">{{department.depname}}</h1>
+                <ul>
+                    <li @click="showLogin" v-for="(item) in department.children" :key="item.depcode">{{item.depname}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 </template>
 
 <script setup lang='ts'>
+    import { ref } from 'vue'
     import useDetailStore from '@/store/modules/hospitalDetail'
     let hospitalDetail = useDetailStore()
-
+    //获取user仓库的数据（visiable）
+    import useUserStore from '@/store/modules/user'
+    let userStore = useUserStore()
+    //控制科室高亮的响应式数据
+    let currentIndex = ref<number>(0)
+    //科室点击
+    const changeIndex = (index:number) => {
+        currentIndex.value = index
+        //点击导航获取右侧科室（H1标题）
+        let allH1 = document.querySelectorAll('.cur')
+        //滚动到对应科室位置
+        allH1[currentIndex.value].scrollIntoView({
+            behavior:'smooth', //过渡动画效果
+            block:'start'      //滚动到的位置，默认起始位置
+        })
+    }
+    const showLogin = () => {
+        userStore.visiable = true
+    }
 </script>
 
 <style lang='scss' scoped>
@@ -82,6 +116,60 @@
             .rule {
                 margin: 20px 0 10px 0;
             }
+        }
+    }
+    .department {
+        margin-top: 20px;
+        width: 100%;
+        height: 500px;
+        display: flex;
+        .left {
+            width: 80px;
+            height: 100%;
+            ul {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(248,248,248);
+                li {
+                    flex:1;
+                    text-align: center;
+                    color: #7f7f7f;
+                    font-size:14px;
+                    line-height: 40px;
+                    &.active {
+                        border-left: 1px solid red;
+                        color: red;
+                        background-color: white;
+                    }
+                }
+            }
+        }
+        .right {
+            flex:1;
+            margin-left: 20px;
+            height: 100%;
+            overflow: auto;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .showDeparment{
+                h1 {
+                    background-color: rgb(248, 248, 248);
+                    color: #7f7f7f;
+                }
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    li {
+                        width: 33%;
+                        color: #7f7f7f;
+                        line-height: 30px;
+                    }
+                }
+            }
+
         }
     }
 }

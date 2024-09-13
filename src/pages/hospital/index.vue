@@ -50,10 +50,11 @@ let $route = useRoute()
 
 onMounted(()=>{
   detailStore.getHospital($route.query.hoscode)
+  detailStore.getDepartment($route.query.hoscode)
 })
 
-const changeActive = (path)=>{
-    $router.push({path:path})
+const changeActive = (path:string)=>{
+    $router.push({path,query:{hoscode:$route.query.hoscode}})
 }
 
 import {

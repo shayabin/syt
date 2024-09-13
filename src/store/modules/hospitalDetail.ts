@@ -1,10 +1,13 @@
 import {defineStore} from 'pinia'
-import {reqHospitalDetail} from '@/api/hospital'
+import {reqHospitalDepartment, reqHospitalDetail} from '@/api/hospital'
 
 const useDetailStore = defineStore('Detail',{
     state:():any=>{
         return {
-            hospitalInfo:{}
+            //医院详情的数据
+            hospitalInfo:{},
+            //存储医院科室的数据
+            departmentArr:[]
         }
     },
     actions:{
@@ -15,6 +18,15 @@ const useDetailStore = defineStore('Detail',{
                 this.hospitalInfo = result.data
             }else{
                 Promise.reject(new Error('获取医院数据失败'))
+            }
+        },
+        async getDepartment(hoscode:string){
+            let result:any = await reqHospitalDepartment(hoscode)
+            if(result.code == 200){
+                this.departmentArr = result.data
+            }else{
+                console.log(666);
+                
             }
         }
     },
